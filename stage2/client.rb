@@ -6,11 +6,9 @@ class Client
   def self.gossip(port, state)
     return JSON.dump({}) if port == PORT
     begin
-      Faraday.post("#{URL}:#{PORT}/gossip", state: state).body
+      Faraday.post("#{URL}:#{port}/gossip", state: state).body
     rescue Faraday::ConnectionFailed => e
       raise
-    end 
+    end
   end
-
-
 end
